@@ -1,5 +1,7 @@
 package com.example.finalexam;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +13,9 @@ public class BoardService {
 	
 	public void create(Board board) { // 컨트롤러에서 데이터를 받아서
 		boardRepository.save(board);
+	}
+	
+	public List<Board> readlist() {
+		return boardRepository.findAll();
 	}
 }

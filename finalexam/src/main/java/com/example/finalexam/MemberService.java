@@ -1,5 +1,7 @@
 package com.example.finalexam;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +13,9 @@ public class MemberService {
 	
 	public void create(Member member) { // 컨트롤러에서 데이터를 받아서
 		memberRepository.save(member);
+	}
+	
+	public List<Member> readlist() {
+		return memberRepository.findAll();
 	}
 }

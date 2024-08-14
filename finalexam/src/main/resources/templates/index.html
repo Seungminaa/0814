@@ -6,6 +6,13 @@
 </head>
 <body>
 	<a href="/create">회원가입</a><br>
-	<a href="/create2">보드</a>
+	<a href="/create2">보드</a><br>
+	
+	<th:block th:each="member : ${members}">
+	[[${member.id}]] / [[${member.pw}]] / [[${member.name}]] <br>
+	</th:block>
+	<th:block th:each="i : ${boards}">
+	[[${i.title}]] / [[${i.content}]] / [[${i.author}]] <br>
+	</th:block>
 </body>
 </html>
