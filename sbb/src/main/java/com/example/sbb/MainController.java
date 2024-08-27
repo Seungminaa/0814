@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.Getter;
+
 @Controller
 public class MainController {
 
@@ -12,5 +14,10 @@ public class MainController {
 	public String index() {
 		System.out.println("index");
 		return "index";
+	}
+	
+	@GetMapping("/")
+	public String root() {
+		return "redirect:/question/list";
 	}
 }

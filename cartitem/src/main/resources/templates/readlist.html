@@ -5,17 +5,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
+	<table>
 	<thead>
 		<tr>
-			<th>제목</th>
+			<th>카트</th>
 			<th>작성일시</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="question : ${questionList}">
-			<td><a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a></td>
-			<td th:text="${question.createDate}"></td>
+		<tr th:each="cart : ${carts}">
+			<td><a th:href="@{|/readdetail/${cart.id}|}" >ss</a></td>
+			<td th:text="${cart.date}"></td>
 		</tr>
 	</tbody>
 </table>
