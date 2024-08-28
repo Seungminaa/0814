@@ -15,7 +15,6 @@ import lombok.Data;
 @Data
 @Entity
 public class Board {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -30,5 +29,4 @@ public class Board {
 	
 	@OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
 	private List<Reply> replys;
-	
 }

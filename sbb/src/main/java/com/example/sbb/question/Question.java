@@ -3,7 +3,7 @@ package com.example.sbb.question;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.example.sbb.Answer;
+import com.example.sbb.answer.Answer;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,18 +17,21 @@ import lombok.Data;
 @Data
 @Entity
 public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
-    @Column(length = 200)
-    private String subject;
-
-    @Column(columnDefinition = "TEXT")
-    private String content;
-
-    private LocalDateTime createDate;
-    
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)//부모 삭제시 자식도 삭제
-    private List<Answer> anserList;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(length = 200)
+	private String subject;
+	
+	@Column(columnDefinition = "TEXT")
+	private String content;
+	
+	private LocalDateTime createDate;
+	
+	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+	// 질문 하나에 답변 여러 개, cascade 질문이 지워지면 답변도 지워짐
+	private List<Answer> answerList;
+	
 }

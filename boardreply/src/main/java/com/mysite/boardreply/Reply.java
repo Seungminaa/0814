@@ -13,7 +13,6 @@ import lombok.Data;
 @Data
 @Entity
 public class Reply {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

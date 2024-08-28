@@ -1,4 +1,4 @@
-package com.example.sbb;
+package com.example.sbb.answer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +15,19 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/answer")
 @RequiredArgsConstructor
 @Controller
-public class AnserController {
+public class AnswerContoroller {
+
 	private final QuestionService questionService;
 	private final AnswerService answerService;
 	
 	@PostMapping("/create/{id}")
-	public String createAnswer(Model model,@PathVariable("id") Integer id, @RequestParam("content") String content) {
+	public String createAnswer(Model model, @PathVariable("id") Integer id, 
+			@RequestParam(value="content") String content) {
 		Question question = this.questionService.getQuestion(id);
+		
 		this.answerService.create(question, content);
 		
-		return "rediract:/question/detail/" + id;
+		return "redirect:/question/detail/" + id;
 	}
+	
 }

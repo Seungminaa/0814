@@ -1,7 +1,8 @@
-package com.example.sbb;
+package com.example.sbb.answer;
 
 import java.time.LocalDateTime;
 
+import com.example.sbb.question.Question;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,16 +14,16 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Reply {
-	@Id
+public class Answer {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(columnDefinition = "TEXT")
     private String content;
-
-    private LocalDateTime createDate; 
+    
+    private LocalDateTime createDate;
 
     @ManyToOne
-    private Board board;
+    private Question question;  
 }

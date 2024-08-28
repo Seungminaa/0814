@@ -3,11 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
 </head>
 <body>
 	<h2>게시판 상세보기</h2>
 
 		
-	[[${board.title}]] / [[${board.content}]] / [[${board.date}]]
+[[${board.id}]] /  [[${board.title}]] / [[${board.content}]] / [[${board.date}]]
+
+<form th:action="@{|/reply/create/${board.id}|}" method="post">
+	<input type="text" name="content">
+	<input type="submit" value="등록">
+</form>
+
+<h5 th:text="|${#lists.size(board.replys)}개의 답변이 있습니다.|"></h5>
+<div>
+    <ul>
+        <li th:each="reply : ${board.replys}" th:text="${reply.content}"></li>
+    </ul>
+</div>	
+
+
 </body>
 </html>
