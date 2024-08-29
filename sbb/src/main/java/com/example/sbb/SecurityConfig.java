@@ -24,9 +24,6 @@ public class SecurityConfig {
             //개발하기 위해 무력화 -> new AntPathRequestMatcher("/h2-console/**") -> /h2-console/로 시작하는 모든 URL은 CSRF 검증을 하지 않는다는 설정을 추가
             .csrf((csrf) -> csrf
                    .ignoringRequestMatchers(new AntPathRequestMatcher("/**")))
-            .headers((headers) -> headers
-                    .addHeaderWriter(new XFrameOptionsHeaderWriter(
-                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
             .formLogin((formLogin) -> formLogin
                     .loginPage("/user/login")
                     .defaultSuccessUrl("/"))

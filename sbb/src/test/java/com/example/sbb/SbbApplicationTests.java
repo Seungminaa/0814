@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.sbb.question.Question;
 import com.example.sbb.question.QuestionRepository;
+import com.example.sbb.question.QuestionService;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -19,7 +20,10 @@ class SbbApplicationTests {
 	@Autowired
 	private QuestionRepository questionRepository;
 	
-	@Test
+	@Autowired
+    private QuestionService questionService;
+	
+	//@Test
 	void testJpa() {
 		Question q1 = new Question();
 		q1.setSubject("sbb가 무엇인가요?");
@@ -33,4 +37,13 @@ class SbbApplicationTests {
         q2.setCreateDate(LocalDateTime.now());
         this.questionRepository.save(q2);  // 두번째 질문 저장
 	}
+	
+	@Test
+    void testJpa2() {
+        for (int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.create(subject, content);
+        }
+    }
 }
